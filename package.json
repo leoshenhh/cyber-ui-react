@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/leoshenhh/cyber-ui-react#readme",
   "devDependencies": {
-    "typescript": "^4.5.4",
+    "html-webpack-plugin": "4.5.2",
+    "typescript": "4.2.4",
     "webpack": "4.29.6",
-    "webpack-cli": "3.2.3"
+    "webpack-cli": "3.2.3",
+    "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
     "awesome-typescript-loader": "^5.2.1"
