@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/leoshenhh/cyber-ui-react/issues"
   },
-  "homepage": "https://github.com/leoshenhh/cyber-ui-react#readme"
+  "homepage": "https://github.com/leoshenhh/cyber-ui-react#readme",
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "webpack": "4.29.6",
+    "webpack-cli": "3.2.3"
+  },
+  "dependencies": {
+    "awesome-typescript-loader": "^5.2.1"
+  }
 }
