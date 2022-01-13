@@ -2,11 +2,12 @@
   "name": "cyber-ui-react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server",
-    "build": "webpack"
+    "start": "webpack-dev-server --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,5 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-    mode: 'production', // production压缩代码 development不压缩代码
     entry: {
         index: './lib/index.tsx'
     },
@@ -22,24 +20,5 @@ module.exports = {
                 loader: 'awesome-typescript-loader'
             }
         ]
-    },
-    plugins: [new HtmlWebpackPlugin({
-        title: "CyberUI",
-        template: 'index.html'
-    })],
-    externals: {
-        // 外部扩展 防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
-        react: {
-            commonjs: 'react',
-            commonjs2: 'react',
-            amd: 'react',
-            root: 'React'
-        },
-        'react-dom': {
-            commonjs: 'react-dom',
-            commonjs2: 'react-dom',
-            amd: 'react-dom',
-            root: 'ReactDom'
-        }
     }
 }
