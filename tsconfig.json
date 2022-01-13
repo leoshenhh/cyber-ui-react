@@ -1,18 +1,11 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "system",
+    "outDir": "./dist/",
+    "sourceMap": true,
     "noImplicitAny": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
-    "outFile": "../../built/local/tsc.js",
-    "sourceMap": true
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "esModuleInterop": true
+  }
 }

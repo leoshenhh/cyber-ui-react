@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-    mode: 'production',
+    mode: 'production', // production压缩代码 development不压缩代码
     entry: {
         index: './lib/index.tsx'
     },
@@ -9,6 +9,10 @@ module.exports = {
         path: path.resolve(__dirname, "dist/lib"),
         library: 'CyberUiReact',
         libraryTarget: 'umd'
+    },
+    resolve: {
+        // 自动解析确定的扩展。默认值为：['.wasm', '.mjs', '.js', '.json']
+        extensions:['.js','.jsx','.ts','.tsx']
     },
     module: {
         rules: [
@@ -23,4 +27,19 @@ module.exports = {
         title: "CyberUI",
         template: 'index.html'
     })],
+    externals: {
+        // 外部扩展 防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
+        react: {
+            commonjs: 'react',
+            commonjs2: 'react',
+            amd: 'react',
+            root: 'React'
+        },
+        'react-dom': {
+            commonjs: 'react-dom',
+            commonjs2: 'react-dom',
+            amd: 'react-dom',
+            root: 'ReactDom'
+        }
+    }
 }
