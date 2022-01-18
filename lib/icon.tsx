@@ -1,4 +1,7 @@
 import React from 'react';
+const reqSvg = require.context ( '../icons', true, /\.svg$/ )
+reqSvg.keys().map( path => reqSvg ( path ) )
+
 
 interface IconProps {
     name: string;
@@ -6,7 +9,11 @@ interface IconProps {
 
 const Icon:React.FunctionComponent<IconProps> = (props)=> {
     return (
-        <span>{props.name}</span>
+        <span>
+            <svg>
+                <use xlinkHref={'#' + props.name}/>
+            </svg>
+        </span>
     );
 }
 
