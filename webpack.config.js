@@ -9,7 +9,7 @@ module.exports = {
         libraryTarget: 'umd'
     },
     resolve: {
-        // 自动解析确定的扩展。默认值为：['.wasm', '.mjs', '.js', '.json']
+        // 解析哪些扩展名结尾的文件。默认值为：['.wasm', '.mjs', '.js', '.json']
         extensions:['.js','.jsx','.ts','.tsx']
     },
     module: {
@@ -22,6 +22,14 @@ module.exports = {
             {
                 test: /\.svg$/,
                 loader: 'svg-sprite-loader'
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    "style-loader", // 将 JS 字符串生成为 style 节点
+                    "css-loader", // 将 CSS 转化成 CommonJS 模块
+                    "sass-loader" // 将 Sass 编译成 CSS，默认使用 Node Sass
+                ]
             }
 
         ]
