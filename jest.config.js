@@ -1,5 +1,5 @@
-
 const config = {
+    preset: 'ts-jest',
     verbose: true,
     clearMocks: false,
     collectCoverage: false,
