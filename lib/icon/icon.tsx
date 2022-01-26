@@ -2,7 +2,7 @@ const reqSvg = require.context ( '../icons', true, /\.svg$/ )
 reqSvg.keys().map( path => reqSvg ( path ) )
 import React from 'react';
 import './icon.scss'
-import classNames from './helper/class-names'
+import classNames from '../helper/class-names'
 
 interface IconProps extends React.SVGAttributes<SVGElement>{
     name: string;
