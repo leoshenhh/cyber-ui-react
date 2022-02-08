@@ -4,7 +4,10 @@ const config = {
     clearMocks: false,
     collectCoverage: false,
     reporters: ["default"],
-    testMatch: [ "**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test|unit).[jt]s?(x)" ]
+    testMatch: [ "**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test|unit).[jt]s?(x)" ],
+    moduleNameMapper: {
+        "^.+\\.(css|less|scss)$": "babel-jest"
+    }
 };
 
 module.exports = config;
