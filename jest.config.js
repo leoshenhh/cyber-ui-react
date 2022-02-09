@@ -4,7 +4,7 @@ const config = {
     clearMocks: false,
     collectCoverage: true,
     collectCoverageFrom: ["lib/**/*.{ts,tsx}"],
-    reporters: ["default"],
+    reporters: ["default","jest-junit"],
     testMatch: [ "**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test|unit).[jt]s?(x)" ],
     moduleNameMapper: {
         "^.+\\.(css|less|scss)$": "babel-jest"
