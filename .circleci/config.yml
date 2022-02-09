@@ -22,6 +22,19 @@ jobs:
           root: .
           paths:
             - node_modules
+  build:
+    <<: *defaults
+    machine:
+      image: ubuntu-2004:202010-01 # recommended linux image
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: yarn build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
   test:
     <<: *defaults
     machine:
