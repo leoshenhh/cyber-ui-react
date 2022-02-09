@@ -1,14 +1,35 @@
-orbs: # declare what orbs we are going to use
-  node: circleci/node@2.0.2 # the node orb provides common node-related configuration
+defaults: &defaults
+  docker:
+    - image:circleci/node: 8
 
-version: 2.1 # using 2.1 provides access to orbs and other features
-
-workflows:
-  matrix-tests:
-    jobs:
-      - node/test:
-          version: 13.11.0
-      - node/test:
-          version: 12.16.0
-      - node/test:
-          version: 10.19.0
+version: 2
+jobs:
+  prepare:
+    <<: *defaults
+    machine:
+      image: ubuntu-2004:202010-01 # recommended linux image
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{checksum "package.json"}}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{checksum "package.json"}}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+  test:
+    <<: *defaults
+    machine:
+      image: ubuntu-2004:202010-01 # recommended linux image
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: yarn ci
+      - store_test_results:
+          path: test_results
