@@ -5,8 +5,7 @@ defaults: &defaults
 version: 2
 jobs:
   prepare:
-    machine:
-      image: ubuntu-2004:202010-01 # recommended linux image
+    <<: *defaults
     steps:
       - checkout
       - restore_cache:
@@ -22,8 +21,7 @@ jobs:
           paths:
             - node_modules
   build:
-    machine:
-      image: ubuntu-2004:202010-01 # recommended linux image
+    <<: *defaults
     steps:
       - checkout
       - attach_workspace:
@@ -34,8 +32,7 @@ jobs:
           paths:
             - dist
   test:
-    machine:
-      image: ubuntu-2004:202010-01 # recommended linux image
+    <<: *defaults
     steps:
       - checkout
       - attach_workspace:
