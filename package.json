@@ -1,9 +1,10 @@
 {
   "name": "cyber-ui-react",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
+  "files": ["dist/**/*"],
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --config=jest.config.js",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
@@ -15,7 +16,7 @@
     "url": "git+https://github.com/leoshenhh/cyber-ui-react.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "leoshenhh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/leoshenhh/cyber-ui-react/issues"
