@@ -44,7 +44,7 @@ jobs:
       - store_test_results:
           path: test_results
 
-  publish:
+  deploy:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -77,13 +77,11 @@ workflows:
               only: /.*/
 
 
-      - publish:
+      - deploy:
           requires:
             - build
           filters:
             tags:
-              only: /.*/
+              only: /**/
             branches:
               ignore: /.*/
-
-
