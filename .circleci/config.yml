@@ -59,7 +59,7 @@ workflows:
       - prepare:
           filters:
             tags:
-              only: /^v.*/
+              only: /.*/
             branches:
               ignore: /.*/
       - test:
@@ -67,7 +67,7 @@ workflows:
             - prepare
           filters:
             tags:
-              only: /^v.*/
+              only: /.*/
             branches:
               ignore: /.*/
 
@@ -76,7 +76,7 @@ workflows:
             - test
           filters:
             tags:
-              only: /^v.*/
+              only: /.*/
             branches:
               ignore: /.*/
 
