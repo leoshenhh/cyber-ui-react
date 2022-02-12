@@ -57,6 +57,9 @@ workflows:
   build_accept_deploy:
     jobs:
       - prepare
+        filters:
+          tags:
+            only: /.*/
       - test:
           requires:
             - prepare
