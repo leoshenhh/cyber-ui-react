@@ -56,10 +56,10 @@ workflows:
   version: 2
   build_accept_deploy:
     jobs:
-      - prepare
-        filters:
-          tags:
-            only: /.*/
+      - prepare:
+          filters:
+            tags:
+              only: /.*/
       - test:
           requires:
             - prepare
