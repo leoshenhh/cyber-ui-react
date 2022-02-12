@@ -56,37 +56,19 @@ workflows:
   version: 2
   build_accept_deploy:
     jobs:
-      - prepare:
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
-              
+      - prepare
       - test:
           requires:
             - prepare
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
 
       - build:
           requires:
             - test
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
 
       - publish:
           requires:
             - build
           filters:
             tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
+              only: /123/
 
