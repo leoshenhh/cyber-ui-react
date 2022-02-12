@@ -58,33 +58,37 @@ workflows:
     jobs:
       - prepare:
           filters:
-            tags:
-              only: /.*/
             branches:
               ignore: /.*/
+            tags:
+              only: /.*/
+
       - test:
           requires:
             - prepare
           filters:
-            tags:
-              only: /.*/
             branches:
               ignore: /.*/
+            tags:
+              only: /.*/
+
 
       - build:
           requires:
             - test
           filters:
-            tags:
-              only: /.*/
             branches:
               ignore: /.*/
+            tags:
+              only: /.*/
+
 
       - publish:
           requires:
             - build
           filters:
-            tags:
-              only: /^v.*/
             branches:
               ignore: /.*/
+            tags:
+              only: /^v.*/
+
