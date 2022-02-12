@@ -75,10 +75,10 @@ workflows:
             branches:
               ignore: /.*/
       - publish:
-          requires:
-            - build
           filters:
             tags:
               only: /^v.*/
             branches:
               ignore: /.*/
+          requires:
+            - build
