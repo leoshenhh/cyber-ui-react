@@ -1,0 +1,48 @@
+@import '../_theme.scss';
+
+.cyber-dialog {
+  background: white;
+  position: fixed;
+  width: 15em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: fade_out(black, 0.5)
+  }
+
+  &-header {
+    font-size: 22px;
+    padding: 8px 16px;
+    border-bottom: 1px solid black;
+  }
+  &-main{
+    padding: 8px 16px;
+    min-height: 6em;
+  }
+  &-footer {
+    padding: 8px 16px;
+    border-top: 1px solid black;
+    text-align: right;
+  }
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    width: 1.5em;
+    height: 1.5em;
+    background: $main-color;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

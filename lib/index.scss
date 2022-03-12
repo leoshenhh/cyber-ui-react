@@ -1,0 +1,7 @@
+@import "./_theme.scss";
+[class^=cyber-]{
+  box-sizing: border-box;
+  &::before,&::after {
+    box-sizing: border-box;
+  }
+}
