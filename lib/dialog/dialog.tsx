@@ -1,9 +1,9 @@
 import React, {Fragment, ReactElement, ReactFragment, ReactNode} from 'react';
 import './dialog.scss';
 import {Icon} from '../index';
-import {scopedClassMaker} from '../classes';
 import ReactDOM from 'react-dom';
 import button from '../button';
+import {scopedClassMaker} from '../helper/class-names';
 
 interface Props {
   visible: Boolean;
@@ -26,18 +26,18 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
   return ReactDOM.createPortal(
     props.visible ?
       <Fragment>
-        <div className={sc('mask')} onClick={clickMask}/>
+        <div className={sc(['mask'])} onClick={clickMask}/>
         <div className={sc()}>
-          <div className={sc('close')} onClick={clickClose}>
+          <div className={sc(['close'])} onClick={clickClose}>
             <Icon name="close"/>
           </div>
-          <header className={sc('header')}>提示</header>
-          <main className={sc('main')}>
+          <header className={sc(['header'])}>提示</header>
+          <main className={sc(['main'])}>
             {props.children}
           </main>
           {
             props.buttons && props.buttons.length > 0 &&
-              <footer className={sc('footer')}>
+              <footer className={sc(['footer'])}>
                 {props.buttons && props.buttons.map((button, index) =>
                   React.cloneElement(button, {key: index})
                 )}

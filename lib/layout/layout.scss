@@ -1,0 +1,21 @@
+@import '../_theme.scss';
+ .cyber-layout{
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+   &-content{
+     flex-grow: 1;
+   }
+   &-hasAside{
+     flex-direction: row;
+   }
+   &-header {
+     height: 20%;
+   }
+   &-footer {
+     height: 20%;
+   }
+   &-aside{
+     width: 10%;
+   }
+ }
