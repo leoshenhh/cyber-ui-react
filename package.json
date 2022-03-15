@@ -1,6 +1,6 @@
 {
   "name": "cyber-ui-react",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
