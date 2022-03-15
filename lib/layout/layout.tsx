@@ -1,6 +1,10 @@
 import React, {ReactElement} from 'react';
 import './layout.scss';
 import Aside from './aside';
+import Content from './content';
+import Footer from './footer';
+import Header from './header';
+
 import { scopedClassMaker } from '../helper/class-names';
 
 const sc = scopedClassMaker('cyber-layout');
@@ -20,3 +24,4 @@ const Layout: React.FunctionComponent<Props> = (props) => {
 };
 
 export default Layout;
+export {Layout,Aside,Content,Footer,Header}

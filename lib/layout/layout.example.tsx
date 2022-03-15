@@ -4,6 +4,7 @@ import Header from './header';
 import Footer from './footer';
 import Content from './content';
 import Aside from './aside';
+import './layout.example.scss'
 
 
 const LayoutExample: React.FunctionComponent = () => {
@@ -11,31 +12,31 @@ const LayoutExample: React.FunctionComponent = () => {
     <>
       <div>
         <h1>example 1</h1>
-        <Layout style={{height: 500}} className="hi">
-          <Header style={{background: 'blue'}}>Header</Header>
-          <Content style={{background: 'yellow'}}>Content</Content>
-          <Footer style={{background: 'blue'}}>Footer</Footer>
+        <Layout className='layout'>
+          <Header className='header'>Header</Header>
+          <Content className='content'>Content</Content>
+          <Footer className='footer'>Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>example 2</h1>
-        <Layout style={{height: 500}} className="hi">
-          <Header style={{background: 'blue'}}>Header</Header>
+        <Layout className='layout'>
+          <Header className='header'>Header</Header>
           <Layout>
-            <Aside style={{background: 'red'}}>aside</Aside>
-            <Content style={{background: 'yellow'}}>Content</Content>
+            <Aside className='aside'>aside</Aside>
+            <Content className='content'>Content</Content>
           </Layout>
-          <Footer style={{background: 'blue'}}>Footer</Footer>
+          <Footer className='footer'>Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>example 3</h1>
-        <Layout style={{height: 500}} className="hi">
-          <Aside style={{background: 'red'}}>aside</Aside>
+        <Layout className='layout'>
+          <Aside className='aside'>aside</Aside>
           <Layout>
-            <Header style={{background: 'blue'}}>Header</Header>
-            <Content style={{background: 'yellow'}}>Content</Content>
-            <Footer style={{background: 'blue'}}>Footer</Footer>
+            <Header className='header'>Header</Header>
+            <Content className='content'>Content</Content>
+            <Footer className='footer'>Footer</Footer>
           </Layout>
         </Layout>
       </div>
