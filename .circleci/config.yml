@@ -49,8 +49,8 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-      - run: npm publish
+#      - run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+#      - run: npm publish
       - run:
           name: gh-pages
           command: |
