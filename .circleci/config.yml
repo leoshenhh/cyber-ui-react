@@ -55,9 +55,12 @@ jobs:
       - run:
           name: gh-pages
           command: |
+            git init
+            git config user.name ${USERNAME}
+            git config user.email ${EMAIL}
             git add -f dist/docs
             git commit -m 'update docs'
-            git push origin `git subtree split --prefix dist master`:gh-pages --force
+            git push -f https://${GH_TOKEN}@${GH_REF} master:gh-pages
 
 workflows:
   version: 2
