@@ -34,7 +34,6 @@ jobs:
             - package.json
             - LICENSE
             - README.md
-            - .git
   test:
     <<: *defaults
     steps:
