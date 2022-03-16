@@ -56,8 +56,8 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-            at: ./dist/docs
-        - run:
+          at: ./dist/docs
+      - run:
           name: gh-pages
           command: |
             git init
