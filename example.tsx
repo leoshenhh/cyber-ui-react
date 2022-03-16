@@ -7,13 +7,14 @@ import LayoutExample from './lib/layout/layout.example';
 import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
 import {Layout, Aside, Content, Footer, Header} from './lib/layout/layout';
 import './example.scss'
+const logo = require('./icons/logo.png').default
 
 ReactDOM.render((
   <Router>
     <Layout className='site-page'>
       <Header className='site-header'>
         <div className="logo">
-          <img src='./icons/logo.png' alt=""/>
+          <img src={logo} alt=""/>
           <span>CyberUI</span>
         </div>
       </Header>

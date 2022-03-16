@@ -26,7 +26,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: yarn build
+      - run: yarn build && yarn docs
       - persist_to_workspace:
           root: .
           paths:
@@ -51,6 +51,12 @@ jobs:
           at: .
       - run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
       - run: npm publish
+      - run:
+          name: gh-pages
+          command: |
+            git add -f dist/docs
+            git commit -m 'update docs'
+            git push origin `git subtree split --prefix dist master`:gh-pages --force
 
 workflows:
   version: 2

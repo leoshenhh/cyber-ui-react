@@ -1,4 +1,5 @@
 const base = require('./webpack.config')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = Object.assign({},base,{
     mode: 'production', // production压缩代码 development不压缩代码
     externals: {
