@@ -78,7 +78,9 @@ workflows:
             tags:
               only: /.*/
             branches:
-              ignore: gh-pages
+              only: master
+              ignore:
+                - gh-pages
       - test:
           requires:
             - prepare
@@ -86,7 +88,9 @@ workflows:
             tags:
               only: /.*/
             branches:
-              ignore: gh-pages
+              only: master
+              ignore:
+                - gh-pages
       - build:
           requires:
             - test
@@ -94,7 +98,9 @@ workflows:
             tags:
               only: /.*/
             branches:
-              ignore: gh-pages
+              only: master
+              ignore:
+                - gh-pages
       - deploy:
           requires:
             - build
