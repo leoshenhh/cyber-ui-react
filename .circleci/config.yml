@@ -30,6 +30,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
+            - docs
             - dist
             - package.json
             - LICENSE
@@ -63,7 +64,7 @@ jobs:
             git init
             git config user.name leoshenhh
             git config user.email 343206898@qq.com
-            git add -f ./dist/docs
+            git add -f ./docs
             git commit -m 'update docs'
             git push -f https://${GH_TOKEN}@github.com/leoshenhh/cyber-ui-react.git master:gh-pages
 
