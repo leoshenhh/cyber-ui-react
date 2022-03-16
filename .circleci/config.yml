@@ -59,7 +59,7 @@ jobs:
             git config user.email 343206898@qq.com
             git add -f dist/docs
             git commit -m 'update docs'
-            git push -f https://${GH_TOKEN}@github.com:leoshenhh/cyber-ui-react.git master:gh-pages
+            git push -f https://${GH_TOKEN}@github.com/leoshenhh/cyber-ui-react.git master:gh-pages
 
 workflows:
   version: 2
