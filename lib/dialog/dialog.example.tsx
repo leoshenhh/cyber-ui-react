@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Dialog, {alert, confirm, modal} from './dialog';
-import button from '../button';
 
 export default function () {
   const [x, setX] = useState(false);

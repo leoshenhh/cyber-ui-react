@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import IconExample from './lib/icon/icon.example';
-import ButtonExample from './lib/button.example';
+
 import DialogExample from './lib/dialog/dialog.example';
 import LayoutExample from './lib/layout/layout.example';
 import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
 import {Layout, Aside, Content, Footer, Header} from './lib/layout/layout';
 import './example.scss'
+import ButtonExample from './lib/button/button.example';
 const logo = require('./icons/logo.png').default
 
 ReactDOM.render((

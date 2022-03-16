@@ -1,10 +1,9 @@
 import React from 'react';
+import Button from './button'
 
 function ButtonExample() {
     return (
-        <div>
-            我是一个button
-        </div>
+        <Button>我是一个button</Button>
     );
 }
 

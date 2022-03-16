@@ -2,7 +2,6 @@ import React, {Fragment, ReactElement, ReactFragment, ReactNode} from 'react';
 import './dialog.scss';
 import {Icon} from '../index';
 import ReactDOM from 'react-dom';
-import button from '../button';
 import {scopedClassMaker} from '../helper/class-names';
 
 interface Props {
