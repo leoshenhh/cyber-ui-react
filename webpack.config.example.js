@@ -7,7 +7,7 @@ module.exports = Object.assign({},base,{
         example: './example.tsx'
     },
     output: {
-        path: path.resolve(__dirname, "dist/docs"),
+        path: path.resolve(__dirname, "/docs"),
     },
     plugins: [new HtmlWebpackPlugin({
         title: "CyberUI",
