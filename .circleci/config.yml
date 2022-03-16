@@ -56,14 +56,14 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ./dist/docs
+          at: .
       - run:
           name: gh-pages
           command: |
             git init
             git config user.name leoshenhh
             git config user.email 343206898@qq.com
-            git add -f .
+            git add -f ./dist/docs
             git commit -m 'update docs'
             git push -f https://${GH_TOKEN}@github.com/leoshenhh/cyber-ui-react.git master:gh-pages
 
@@ -77,7 +77,7 @@ workflows:
             tags:
               only: /.*/
             branches:
-              only: master
+              ignore: gh-pages
       - test:
           requires:
             - prepare
@@ -85,7 +85,7 @@ workflows:
             tags:
               only: /.*/
             branches:
-              only: master
+              ignore: gh-pages
       - build:
           requires:
             - test
@@ -93,7 +93,7 @@ workflows:
             tags:
               only: /.*/
             branches:
-              only: master
+              ignore: gh-pages
       - deploy:
           requires:
             - build
