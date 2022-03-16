@@ -48,16 +48,16 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: .
-#      - run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-#      - run: npm publish
+          at: ./dist/docs
+      - run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+      - run: npm publish
       - run:
           name: gh-pages
           command: |
             git init
             git config user.name leoshenhh
             git config user.email 343206898@qq.com
-            git add -f dist/docs
+            git add -f .
             git commit -m 'update docs'
             git push -f https://${GH_TOKEN}@github.com/leoshenhh/cyber-ui-react.git master:gh-pages
 
@@ -69,23 +69,29 @@ workflows:
           filters:
             tags:
               only: /.*/
+            branches:
+              only: master
       - test:
           requires:
             - prepare
           filters:
             tags:
               only: /.*/
+            branches:
+              only: master
       - build:
           requires:
             - test
           filters:
             tags:
               only: /.*/
+            branches:
+              only: master
       - deploy:
           requires:
             - build
           filters:
             tags:
               only: /^v.*/
-#            branches:
-#              ignore: /.*/
+            branches:
+              ignore: /.*/
