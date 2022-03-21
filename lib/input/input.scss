@@ -1,0 +1,14 @@
+@import "../_theme.scss";
+.cyber-input{
+  border: 1px solid #dddddd;
+  line-height: 22px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: box-shadow .3s;
+  &:focus{
+    outline: none;
+    border-color: $main-color;
+    box-shadow: 0 0 0 2px fade-out($main-color,0.5);
+  }
+}
+

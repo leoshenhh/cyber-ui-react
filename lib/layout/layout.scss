@@ -13,7 +13,10 @@
      height: 10%;
    }
    &-footer {
-     height: 10%;
+     position: fixed;
+     bottom: 0;
+     height: 5%;
+     width: 100%;
    }
    &-aside{
      width: 15%;

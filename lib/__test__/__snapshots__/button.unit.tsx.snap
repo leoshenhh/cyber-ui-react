@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`button 是个div 1`] = `
-<div>
-  我是一个button
-</div>
-`;
