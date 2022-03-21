@@ -1,0 +1,24 @@
+.cyber-form {
+  &-row {
+    margin: 24px 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &-label{
+    text-align: justify;
+    height: 22px;
+    &::after{
+      height: 0;
+      width: 100%;
+      content: '';
+      display: inline-block;
+    }
+  }
+
+}
