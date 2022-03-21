@@ -13,7 +13,8 @@ const Cyber:React.FunctionComponent<Props> =  (props) => {
   return(
     <span
       className={sc([''])}
-      style={{animation: `ani ${props.speed}s infinite linear`}}
+      style={{animation: props.animate ? `ani ${props.speed}s infinite linear` :  '1s'
+      }}
     >
       {props.children}
     </span>
@@ -21,7 +22,8 @@ const Cyber:React.FunctionComponent<Props> =  (props) => {
 }
 
 Cyber.defaultProps = {
-  speed: 50
+  speed: 50,
+  animate: true
 }
 
 export default Cyber

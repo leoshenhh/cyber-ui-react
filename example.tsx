@@ -18,7 +18,7 @@ ReactDOM.render((
       <Header className='site-header'>
         <div className="logo">
           <img src={logo} alt=""/>
-          <h2><Cyber animate={true}>CyberUI</Cyber></h2>
+          <h2><Cyber>CyberUI</Cyber></h2>
         </div>
         <h4><Cyber>  A Cool And Simple REACT UI library </Cyber></h4>
       </Header>
