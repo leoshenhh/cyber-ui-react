@@ -2,6 +2,7 @@ $aside-padding: 16px;
 $main-color: #747cff;
 $sec-main-color: #3842ff;
 $thr-main-color: #a4ffdb;
+$background-black:#04080d;
 * {
   margin: 0;
   padding: 0;
@@ -13,9 +14,7 @@ ul, li {
 *::before, *::after {
   box-sizing: border-box;
 }
-h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -25,9 +24,13 @@ a {
   min-height: 100vh;
 
   .site-header {
-    background: #eeeeee;
+    background: $background-black;
+    padding-right: 6px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    color: #8B949E;
+    border: 1px solid #30363d;
 
     .logo {
       padding: 0 6px;
@@ -47,13 +50,16 @@ a {
   }
 
   .site-aside {
-    h2 {
+    background: rgba(13,17,23,0.9);
+    border: 1px solid #30363d;
+    box-shadow: 0 100px 80px rgba(0,0,0,0.18),0 41.7776px 33.4221px rgba(0,0,0,0.129394),0px 22.3363px 17.869px rgba(0,0,0,0.107299),0px 12.5216px 10.0172px rgba(0,0,0,0.09),0px 6.6501px 5.32008px rgba(0,0,0,0.0727007),0px 2.76726px 2.21381px rgba(0,0,0,0.0506062);
+    h1 {
       padding: 12px $aside-padding;
       color: $sec-main-color;
     }
 
     li {
-      color: $main-color;
+      color: #ffffff;
 
       a {
         padding: 8px $aside-padding;
@@ -71,7 +77,10 @@ a {
       }
     }
   }
-
+  .site-main{
+    padding: 20px;
+    //background: linear-gradient(270.97deg, #FFE580 -21.36%, #FF7571 -2.45%, #EA5DAD 26.84%, #C2A0FD 64.15%, #3BF0E4 108.29%, #B2F4B6 159.03%);
+  }
   .footer {
     display: flex;
     justify-content: center;
@@ -79,6 +88,9 @@ a {
     font-size: 14px;
     color: gray;
     padding: 16px 0;
+    background: $background-black;
+    color: #8B949E;
+    border: 1px solid #30363d;
   }
 }
 
