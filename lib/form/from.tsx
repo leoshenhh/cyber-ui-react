@@ -16,7 +16,8 @@ interface Props {
   buttons: ReactFragment,
   onSubmit: () => void,
   onChange: (value: FormData) => void,
-  errors: any
+  errors: any,
+  labelWidth?: Number
 }
 
 const Form: React.FunctionComponent<Props> = (props) => {
@@ -30,31 +31,33 @@ const Form: React.FunctionComponent<Props> = (props) => {
   };
   return (
     <form onSubmit={onSubmit}>
-      <table className={sc([''])}>
+      <div className={sc([''])}>
         {
           props.fields.map(field =>
-            <tr className={sc(['row'])} key={field.name}>
-              <td className={sc(['label'])}>{field.label}</td>
-              <td>
-                <Input
-                  type={field.input.type}
-                  name={field.name}
-                  value={props.formData[field.name]}
-                  onChange={(e) => onChange(field.name, e.target.value)}
-                />
-              </td>
+            <div className={sc(['row'])} key={field.name}>
+              <div className={sc(['row-label'])} style={{width: `${props.labelWidth}px`}}>{field.label }</div>
+              <Input
+                type={field.input.type}
+                name={field.name}
+                value={props.formData[field.name]}
+                onChange={(e) => onChange(field.name, e.target.value)}
+              />
               <div>{props.errors[field.name]}</div>
-            </tr>
+            </div>
           )
         }
-      </table>
-      <div>
+      </div>
+      <div style={{marginLeft: `${props.labelWidth}px`}}>
         {props.buttons}
       </div>
     </form>
 
   );
 };
+
+Form.defaultProps = {
+  labelWidth: 60
+}
 
 export default Form;
 export {validator};
