@@ -8,6 +8,10 @@ interface FormRule {
   pattern?: RegExp;
 }
 
+export interface Errors {
+  [k:string]: string[]
+}
+
 export type FormRules = Array<FormRule>
 
 const isempty = (value: any): Boolean => {
@@ -19,7 +23,7 @@ const isempty = (value: any): Boolean => {
 };
 
 const validator = (formData: FormData, rules: FormRules) => {
-  const errors: any = {};
+  const errors: Errors = {};
   const addError = (key: string, message: string) => {
     if (errors[key] === undefined){
       errors[key] = []

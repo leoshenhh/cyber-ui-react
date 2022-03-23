@@ -1,5 +1,5 @@
 import React, {ReactFragment} from 'react';
-import validator, {FormRules} from './validator';
+import validator, {Errors, FormRules} from './validator';
 import Input from '../input/input';
 import {scopedClassMaker} from '../helper/class-names';
 import './form.scss';
@@ -20,7 +20,7 @@ interface Props {
   buttons: ReactFragment,
   onSubmit: () => void,
   onChange: (value: FormData) => void,
-  errors: any,
+  errors: Errors,
   labelWidth?: Number;
   errorModel?: 'single' | 'all'
 }
