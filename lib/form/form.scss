@@ -1,6 +1,7 @@
 .cyber-form {
   &-row {
     margin: 24px 0;
+    position: relative;
     &:first-child {
       margin-top: 0;
     }
@@ -8,15 +9,10 @@
       display: inline-block;
     }
   }
-  &-label{
-    text-align: justify;
-    height: 22px;
-    &::after{
-      height: 0;
-      width: 100%;
-      content: '';
-      display: inline-block;
-    }
+  &-errors{
+    position: absolute;
+    font-size: 12px;
+    color: red;
+    margin-top: 2px;
   }
-
 }

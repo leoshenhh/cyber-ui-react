@@ -10,17 +10,23 @@ export interface FormData {
   [propName: string]: any;
 }
 
+interface Field {
+  name: string, label: string, input: { type: string }
+}
+
 interface Props {
   formData: FormData,
-  fields: Array<{ name: string, label: string, input: { type: string } }>,
+  fields: Array<Field>,
   buttons: ReactFragment,
   onSubmit: () => void,
   onChange: (value: FormData) => void,
   errors: any,
-  labelWidth?: Number
+  labelWidth?: Number;
+  errorModel?: 'single' | 'all'
 }
 
 const Form: React.FunctionComponent<Props> = (props) => {
+  console.log(props.errors);
   const onSubmit: React.FormEventHandler = (e) => {
     e.preventDefault();
     props.onSubmit();
@@ -29,20 +35,30 @@ const Form: React.FunctionComponent<Props> = (props) => {
     const newValue = {...props.formData, [name]: value};
     props.onChange(newValue);
   };
+  const showError = (field:Field) => {
+    if (props.errors && props.errors[field.name] &&  props.errors[field.name].length > 0) {
+      if (props.errorModel === 'single') {
+        return props.errors[field.name][0];
+      } else {
+        return props.errors[field.name].join(',');
+      }
+    }
+
+  };
   return (
     <form onSubmit={onSubmit}>
       <div className={sc([''])}>
         {
           props.fields.map(field =>
             <div className={sc(['row'])} key={field.name}>
-              <div className={sc(['row-label'])} style={{width: `${props.labelWidth}px`}}>{field.label }</div>
+              <div className={sc(['row-label'])} style={{width: `${props.labelWidth}px`}}>{field.label}</div>
               <Input
                 type={field.input.type}
                 name={field.name}
                 value={props.formData[field.name]}
                 onChange={(e) => onChange(field.name, e.target.value)}
               />
-              <div>{props.errors[field.name]}</div>
+              <div style={{marginLeft: `${props.labelWidth}px`}} className={sc(['errors'])}>{showError(field)}</div>
             </div>
           )
         }
@@ -56,8 +72,9 @@ const Form: React.FunctionComponent<Props> = (props) => {
 };
 
 Form.defaultProps = {
-  labelWidth: 60
-}
+  labelWidth: 60,
+  errorModel: 'single'
+};
 
 export default Form;
 export {validator};

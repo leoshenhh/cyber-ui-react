@@ -14,6 +14,7 @@ export default () => {
   const [errors,setErrors] = useState({})
   const formRules = [
     {key: 'username', required: true,maxLength: 10,minLength: 2,pattern: /^[a-z]+$/},
+    {key: 'password', required: true,maxLength: 10,minLength: 2,pattern: /^[a-z]+$/},
   ]
   const onSubmit = () => {
     const errors = validator(formData,formRules)
