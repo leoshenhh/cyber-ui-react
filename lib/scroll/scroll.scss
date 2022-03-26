@@ -9,6 +9,9 @@
     right: 0;
     bottom: 0;
     overflow: auto;
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
   &-track{
     width: 10px;
@@ -26,6 +29,7 @@
     border-radius: 3px;
     background-image: repeating-linear-gradient(110deg, #EA5DAD, #C2A0FD 25%, #3BF0E4 50% , #C2A0FD 75%, #EA5DAD);
     animation: 1s barAni infinite linear;
+    //transition: all 1s ease-in-out;
   }
   @keyframes barAni {
     0%{

@@ -7,62 +7,81 @@ interface Props extends HTMLAttributes<HTMLDivElement> {}
 
 const sc = scopedClassMaker('cyber-scroll');
 
+const isTouchDevice = 'ontouchstart' in document.documentElement;
 
 const Scroll: React.FunctionComponent<Props> = (props) => {
   const [barHeight, setBarHeight] = useState(0);
   const [barTop, _setBarTop] = useState(0);
+  const [barVisible,setBarVisible] = useState(false)
+
   const containerRef = useRef<HTMLDivElement>(null);
-  const setBarTop = (number:number) => {
-    if(number < 0) return
+
+  const setBarTop = (number: number) => {
+    if (number < 0) return;
     const scrollHeight = containerRef.current.scrollHeight;
     const viewHeight = containerRef.current.getBoundingClientRect().height;
-    const maxBarTop = (scrollHeight - viewHeight) * viewHeight / scrollHeight
-    if(number > maxBarTop) return
-    _setBarTop(number)
-  }
+    const maxBarTop = (scrollHeight - viewHeight) * viewHeight / scrollHeight;
+    if (number > maxBarTop) return;
+    _setBarTop(number);
+  };
+
   const onScroll: UIEventHandler = (e) => {
+    setBarVisible(true)
     const scrollHeight = containerRef.current.scrollHeight;
     const viewHeight = containerRef.current.getBoundingClientRect().height;
     const scrollTop = containerRef.current.scrollTop;
     setBarTop(scrollTop * viewHeight / scrollHeight);
   };
+
   useEffect(() => {
     const scrollHeight = containerRef.current.scrollHeight;
     const viewHeight = containerRef.current.getBoundingClientRect().height;
     setBarHeight(viewHeight * viewHeight / scrollHeight);
   }, []);
+
+  useEffect(() => {
+    // console.log(barVisible)
+    if(barVisible){
+      setTimeout(() => {
+        console.log(111)
+        setBarVisible(false)
+      },1000)
+    }
+  },[barVisible])
+
   const draggingRef = useRef(false);
   const firstYRef = useRef(0);
   const firstBarTop = useRef(0);
+
   const onMouseDownBar: MouseEventHandler = (e) => {
     firstYRef.current = e.clientY;
     draggingRef.current = true;
-    firstBarTop.current = barTop
+    firstBarTop.current = barTop;
   };
   const onMouseUpBar = () => {
     draggingRef.current = false;
   };
-  const onMouseMoveBar = (e:MouseEvent) => {
+  const onMouseMoveBar = (e: MouseEvent) => {
     if (draggingRef.current) {
       e.preventDefault();
       const delta = e.clientY - firstYRef.current;
-      const newBarTop = firstBarTop.current + delta
+      const newBarTop = firstBarTop.current + delta;
       setBarTop(newBarTop);
       const scrollHeight = containerRef.current.scrollHeight;
       const viewHeight = containerRef.current.getBoundingClientRect().height;
-      containerRef.current.scrollTop = newBarTop * scrollHeight / viewHeight
+      containerRef.current.scrollTop = newBarTop * scrollHeight / viewHeight;
     }
   };
 
-   useEffect(()=>{
-   // 传入空数组 相当于mounted
-     document.addEventListener('mouseup',onMouseUpBar)
-     document.addEventListener('mousemove',onMouseMoveBar)
-     return () => {
-       document.removeEventListener('mouseup',onMouseUpBar)
-       document.removeEventListener('mousemove',onMouseMoveBar)
-     }
-   },[])
+  useEffect(() => {
+    // 传入空数组 相当于mounted
+    document.addEventListener('mouseup', onMouseUpBar);
+    document.addEventListener('mousemove', onMouseMoveBar);
+    return () => {
+      document.removeEventListener('mouseup', onMouseUpBar);
+      document.removeEventListener('mousemove', onMouseMoveBar);
+    };
+  }, []);
   return (
     <div
       className={sc([''])} {...props}
@@ -75,16 +94,19 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
       >
         {props.children}
       </div>
-      <div className={sc(['track'])}>
-        <div
-          className={sc(['bar'])}
-          style={{
-            height: barHeight,
-            transform: `translateY(${barTop}px)`,
-        }}
-          onMouseDown={onMouseDownBar}
-        />
-      </div>
+      {
+        barVisible &&
+          <div className={sc(['track'])}>
+              <div
+                  className={sc(['bar'])}
+                  style={{
+                    height: barHeight,
+                    transform: `translateY(${barTop}px)`,
+                  }}
+                  onMouseDown={onMouseDownBar}
+              />
+          </div>
+      }
     </div>
   );
 };
