@@ -4,3 +4,4 @@ dist/
 coverage
 test-results
 .DS_store
+docs
