@@ -10,6 +10,7 @@ import './example.scss'
 import ButtonExample from './lib/button/button.example';
 import Cyber from './lib/cyber/cyber';
 import ScrollExample from './lib/scroll/scrollExample';
+import CyberExample from './lib/cyber/cyber.example';
 
 const logo = require('./icons/logo.png').default
 
@@ -25,8 +26,11 @@ ReactDOM.render((
       </Header>
       <Layout>
         <Aside className='site-aside'>
-          <h1><Cyber>组件</Cyber></h1>
+          <h1><Cyber>Component</Cyber></h1>
           <ul>
+            <li>
+              <NavLink to="/cyber">Cyber</NavLink>
+            </li>
             <li>
               <NavLink to="/icon">Icon</NavLink>
             </li>
@@ -48,6 +52,7 @@ ReactDOM.render((
           </ul>
         </Aside>
         <Content className='site-main'>
+          <Route path="/cyber" component={CyberExample}/>
           <Route path="/icon" component={IconExample}/>
           <Route path="/button" component={ButtonExample}/>
           <Route path="/dialog" component={DialogExample}/>
