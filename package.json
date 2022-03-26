@@ -18,9 +18,9 @@
     "type": "git",
     "url": "git+https://github.com/leoshenhh/cyber-ui-react.git"
   },
-  "keywords": [],
+  "keywords": ["cyber","react","ui"],
   "author": "leoshenhh",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/leoshenhh/cyber-ui-react/issues"
   },
