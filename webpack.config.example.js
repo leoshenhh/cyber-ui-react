@@ -10,8 +10,6 @@ module.exports = Object.assign({},base,{
         path: path.resolve(__dirname, "docs"),
     },
     plugins: [new HtmlWebpackPlugin({
-        title: "CyberUI",
-        template: 'example.html',
-        filename: "example.html"
+        title: "CyberUI"
     })]
 })

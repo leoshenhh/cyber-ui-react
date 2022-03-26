@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react';
-import Form ,{FormData,validator} from './from';
+import Form ,{FormData,validator} from './form';
 import Button from '../button/button';
 
 export default () => {

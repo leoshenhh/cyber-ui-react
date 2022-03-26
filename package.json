@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/leoshenhh/cyber-ui-react/issues"
   },
-  "homepage": "https://github.com/leoshenhh/cyber-ui-react#readme",
+  "homepage": "https://leoshenhh.github.io/cyber-ui-react",
   "devDependencies": {
     "@babel/preset-env": "^7.16.8",
     "@babel/preset-react": "^7.16.7",

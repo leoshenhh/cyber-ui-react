@@ -1,4 +1,4 @@
-import {FormData} from './from';
+import {FormData} from './form';
 
 interface FormRule {
   key: string;

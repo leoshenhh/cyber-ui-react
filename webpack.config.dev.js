@@ -7,6 +7,7 @@ module.exports = Object.assign({},base,{
       example: './example.tsx'
     },
     plugins: [new HtmlWebpackPlugin({
-        title: "CyberUI"
+        title: "CyberUI",
+        template: 'example.html'
     })]
 })
