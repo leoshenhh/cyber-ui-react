@@ -76,31 +76,26 @@ workflows:
       - prepare:
           filters:
             tags:
-              only: /.*/
+              only: /^v.*/
             branches:
               only: master
-              ignore:
-                - gh-pages
       - test:
           requires:
             - prepare
           filters:
             tags:
-              only: /.*/
+              only: /^v.*/
             branches:
               only: master
-              ignore:
-                - gh-pages
       - build:
           requires:
             - test
           filters:
             tags:
-              only: /.*/
+              only: /^v.*/
             branches:
               only: master
-              ignore:
-                - gh-pages
+
       - deploy:
           requires:
             - build
