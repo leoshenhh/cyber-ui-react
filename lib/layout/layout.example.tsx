@@ -5,42 +5,43 @@ import Footer from './footer';
 import Content from './content';
 import Aside from './aside';
 import './layout.example.scss'
+import Scroll from '../scroll/scroll';
 
 
 const LayoutExample: React.FunctionComponent = () => {
   return (
-    <>
+    <Scroll style={{height: '100%'}}>
       <div>
         <h1>example 1</h1>
-        <Layout className='layout'>
-          <Header className='header'>Header</Header>
-          <Content className='content'>Content</Content>
-          <Footer className='footer'>Footer</Footer>
+        <Layout className="layout">
+          <Header className="header">Header</Header>
+          <Content className="content">Content</Content>
+          <Footer className="footer">Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>example 2</h1>
-        <Layout className='layout'>
-          <Header className='header'>Header</Header>
+        <Layout className="layout">
+          <Header className="header">Header</Header>
           <Layout>
-            <Aside className='aside'>aside</Aside>
-            <Content className='content'>Content</Content>
+            <Aside className="aside">aside</Aside>
+            <Content className="content">Content</Content>
           </Layout>
-          <Footer className='footer'>Footer</Footer>
+          <Footer className="footer">Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>example 3</h1>
-        <Layout className='layout'>
-          <Aside className='aside'>aside</Aside>
+        <Layout className="layout">
+          <Aside className="aside">aside</Aside>
           <Layout>
-            <Header className='header'>Header</Header>
-            <Content className='content'>Content</Content>
-            <Footer className='footer'>Footer</Footer>
+            <Header className="header">Header</Header>
+            <Content className="content">Content</Content>
+            <Footer className="footer">Footer</Footer>
           </Layout>
         </Layout>
       </div>
-    </>
+    </Scroll>
   );
 };
 

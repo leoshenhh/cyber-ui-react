@@ -1,0 +1,39 @@
+.cyber-scroll{
+  position: relative;
+  border: 1px solid red;
+  overflow: hidden;
+  &-inner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+  &-track{
+    width: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%  ;
+  }
+  &-bar{
+    position: absolute;
+    height: 30px;
+    top: 0;
+    right: 2px;
+    width: 6px;
+    border-radius: 3px;
+    background-image: repeating-linear-gradient(110deg, #EA5DAD, #C2A0FD 25%, #3BF0E4 50% , #C2A0FD 75%, #EA5DAD);
+    animation: 1s barAni infinite linear;
+  }
+  @keyframes barAni {
+    0%{
+      background-position: 0 0;
+    }
+    100%{
+      background-position: 0 200px;
+    }
+  }
+}
+

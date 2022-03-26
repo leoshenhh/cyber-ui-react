@@ -9,6 +9,7 @@ import {Layout, Aside, Content, Footer, Header} from './lib/layout/layout';
 import './example.scss'
 import ButtonExample from './lib/button/button.example';
 import Cyber from './lib/cyber/cyber';
+import ScrollExample from './lib/scroll/scrollExample';
 
 const logo = require('./icons/logo.png').default
 
@@ -41,6 +42,9 @@ ReactDOM.render((
             <li>
               <NavLink to="/form">Form</NavLink>
             </li>
+            <li>
+              <NavLink to="/scroll">Scroll</NavLink>
+            </li>
           </ul>
         </Aside>
         <Content className='site-main'>
@@ -49,6 +53,7 @@ ReactDOM.render((
           <Route path="/dialog" component={DialogExample}/>
           <Route path="/layout" component={LayoutExample}/>
           <Route path="/form" component={FormExample}/>
+          <Route path="/scroll" component={ScrollExample}/>
         </Content>
       </Layout>
       <Footer className='footer'><Cyber>&copy; leoshenhh</Cyber></Footer>
