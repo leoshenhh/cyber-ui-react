@@ -4,7 +4,7 @@ import IconExample from './lib/icon/icon.example';
 import DialogExample from './lib/dialog/dialog.example';
 import LayoutExample from './lib/layout/layout.example';
 import FormExample from './lib/form/form.example'
-import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter, Route, NavLink,Routes} from 'react-router-dom';
 import {Layout, Aside, Content, Footer, Header} from './lib/layout/layout';
 import './example.scss'
 import ButtonExample from './lib/button/button.example';
@@ -15,7 +15,7 @@ import CyberExample from './lib/cyber/cyber.example';
 const logo = require('./icons/logo.png').default
 
 ReactDOM.render((
-  <Router>
+  <BrowserRouter>
     <Layout className='site-page'>
       <Header className='site-header'>
         <div className="logo">
@@ -52,17 +52,19 @@ ReactDOM.render((
           </ul>
         </Aside>
         <Content className='site-main'>
-          <Route path="/cyber" component={CyberExample}/>
-          <Route path="/icon" component={IconExample}/>
-          <Route path="/button" component={ButtonExample}/>
-          <Route path="/dialog" component={DialogExample}/>
-          <Route path="/layout" component={LayoutExample}/>
-          <Route path="/form" component={FormExample}/>
-          <Route path="/scroll" component={ScrollExample}/>
+          <Routes>
+          <Route path="/cyber" element={<CyberExample/>}/>
+          <Route path="/icon" element={<IconExample/>}/>
+          <Route path="/button" element={<ButtonExample/>}/>
+          <Route path="/dialog" element={<DialogExample/>}/>
+          <Route path="/layout" element={<LayoutExample/>}/>
+          <Route path="/form" element={<FormExample/>}/>
+          <Route path="/scroll" element={<ScrollExample/>}/>
+          </Routes>
         </Content>
       </Layout>
       <Footer className='footer'><Cyber>&copy; leoshenhh</Cyber></Footer>
     </Layout>
-  </Router>
+  </BrowserRouter>
 ), document.getElementById('root'));
 

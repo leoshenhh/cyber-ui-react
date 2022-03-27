@@ -1,13 +1,18 @@
 const base = require('./webpack.config')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-module.exports = Object.assign({},base,{
+module.exports = Object.assign({}, base, {
     mode: 'development', // production压缩代码 development不压缩代码
+    devtool: 'source-map',
+    devServer: {
+        historyApiFallback: true,
+    },
     entry: {
-      example: './example.tsx'
+        example: './example.tsx'
     },
     plugins: [new HtmlWebpackPlugin({
         title: "CyberUI",
         template: 'example.html'
     })]
+
 })
