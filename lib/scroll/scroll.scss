@@ -1,6 +1,5 @@
 .cyber-scroll{
   position: relative;
-  border: 1px solid red;
   overflow: hidden;
   &-inner{
     position: absolute;
@@ -27,17 +26,7 @@
     right: 2px;
     width: 6px;
     border-radius: 3px;
-    background-image: repeating-linear-gradient(110deg, #EA5DAD, #C2A0FD 25%, #3BF0E4 50% , #C2A0FD 75%, #EA5DAD);
-    animation: 1s barAni infinite linear;
-    //transition: all 1s ease-in-out;
-  }
-  @keyframes barAni {
-    0%{
-      background-position: 0 0;
-    }
-    100%{
-      background-position: 0 200px;
-    }
+    background-image: repeating-linear-gradient(0deg, #EA5DAD, #C2A0FD 25%, #3BF0E4 50% , #C2A0FD 75%, #EA5DAD);
   }
 }
 

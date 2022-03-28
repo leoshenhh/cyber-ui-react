@@ -2,17 +2,32 @@ import React, {HTMLAttributes, MouseEventHandler, UIEventHandler, useEffect, use
 import {scopedClassMaker} from '../helper/class-names';
 import './scroll.scss';
 import scrollbarWidth from './scroolbar-width';
+import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {}
-
+interface Props extends HTMLAttributes<HTMLDivElement> {
+  height: string;
+  autoHide?: boolean;
+}
 const sc = scopedClassMaker('cyber-scroll');
 
-const isTouchDevice = 'ontouchstart' in document.documentElement;
+const BarAni = styled('div')<{barHeight: number;aniName: string}> `
+  @keyframes ${props1 => props1.aniName} {
+    0%{
+      background-position: 0 0;
+    }
+    100%{
+      background-position: 0 ${props2 => props2.barHeight}px;
+    }
+  }
+`
 
 const Scroll: React.FunctionComponent<Props> = (props) => {
+  const [barAniID] = useState(`barAni${Math.floor(Math.random() * 1000)}`)
+  const {height, autoHide, ...rest} = props;
   const [barHeight, setBarHeight] = useState(0);
+
   const [barTop, _setBarTop] = useState(0);
-  const [barVisible,setBarVisible] = useState(false)
+  const [barVisible, setBarVisible] = useState(!autoHide);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -26,7 +41,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   };
 
   const onScroll: UIEventHandler = (e) => {
-    setBarVisible(true)
+    setBarVisible(true);
     const scrollHeight = containerRef.current.scrollHeight;
     const viewHeight = containerRef.current.getBoundingClientRect().height;
     const scrollTop = containerRef.current.scrollTop;
@@ -37,17 +52,19 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
     const scrollHeight = containerRef.current.scrollHeight;
     const viewHeight = containerRef.current.getBoundingClientRect().height;
     setBarHeight(viewHeight * viewHeight / scrollHeight);
+
+    if(scrollHeight === viewHeight){
+      setBarVisible(false)
+    }
   }, []);
 
   useEffect(() => {
-    // console.log(barVisible)
-    if(barVisible){
+    if (barVisible && autoHide) {
       setTimeout(() => {
-        console.log(111)
-        setBarVisible(false)
-      },1000)
+        setBarVisible(false);
+      }, 1000);
     }
-  },[barVisible])
+  }, [barVisible]);
 
   const draggingRef = useRef(false);
   const firstYRef = useRef(0);
@@ -84,8 +101,12 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   }, []);
   return (
     <div
-      className={sc([''])} {...props}
+      className={sc([''])}
+      style={{height: height}}
+      {...rest}
     >
+      <BarAni barHeight={barHeight} aniName={barAniID}/>
+
       <div
         className={sc(['inner'])}
         style={{right: -scrollbarWidth()}}
@@ -102,6 +123,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
                   style={{
                     height: barHeight,
                     transform: `translateY(${barTop}px)`,
+                    animation: `1s ${barAniID} infinite linear`
                   }}
                   onMouseDown={onMouseDownBar}
               />
@@ -109,6 +131,10 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
       }
     </div>
   );
+};
+
+Scroll.defaultProps = {
+  autoHide: false
 };
 
 export default Scroll;
