@@ -5,7 +5,7 @@ import scrollbarWidth from './scroolbar-width';
 import styled from 'styled-components';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  height: string;
+  height?: string;
   autoHide?: boolean;
 }
 const sc = scopedClassMaker('cyber-scroll');
@@ -102,7 +102,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   return (
     <div
       className={sc([''])}
-      style={{height: height}}
+      style={{height: height,width: '100%'}}
       {...rest}
     >
       <BarAni barHeight={barHeight} aniName={barAniID}/>
@@ -134,6 +134,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
 };
 
 Scroll.defaultProps = {
+  height: '200px',
   autoHide: false
 };
 

@@ -20,6 +20,7 @@ interface Props extends React.HTMLAttributes<HTMLElement>{
   code: string;
   title: string;
   describe: string;
+  codeHeight?: string;
 }
 
 const PreCode: React.FunctionComponent<Props> = (props) => {
@@ -39,16 +40,20 @@ const PreCode: React.FunctionComponent<Props> = (props) => {
         <Icon style={{cursor: 'pointer'}} onClick={onClick} name='open'/>
       </div>
       <div style={{
-        maxHeight: spread ? '400px' : '0',
+        maxHeight: spread ? props.codeHeight : '0',
         overflow: 'hidden',
         transition: 'all .3s ease-in-out'
       }}>
-        <Scroll height='400px'>
+        <Scroll height={props.codeHeight}>
           <div className={sc(['codeWrapper'])} dangerouslySetInnerHTML={{__html: marked(MARKDOWN_TEXT)}}/>
         </Scroll>
       </div>
     </div>
   )
 };
+
+PreCode.defaultProps = {
+  codeHeight: '400px'
+}
 
 export default PreCode;
