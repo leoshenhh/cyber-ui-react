@@ -22,7 +22,7 @@ const Cyber:React.FunctionComponent<Props> =  (props) => {
 }
 
 Cyber.defaultProps = {
-  speed: 50,
+  speed: 2,
   animate: true
 }
 
