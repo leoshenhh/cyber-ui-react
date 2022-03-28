@@ -1,8 +1,36 @@
-.language-tsx{
-  width: 500px;
-  font-size: 14px;
-  padding: 16px;
-  line-height: 1.5em;
-  border-radius: 10px;
+.cyber-pre{
+  &-example{
+    padding: 30px 32px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+  }
+  &-describe{
+    padding: 20px 32px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    position: relative;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-describe-title{
+    padding: 0 8px;
+    position: absolute;
+    top: -10px;
+    background: #ffffff;
+  }
+  &-codeWrapper{
+    color: #ffffff;
+    font-size: 16px;
+    padding: 16px;
+    line-height: 1.5em;
+    border-radius: 10px;
+    background-color: #282c34;
+    transition: ease-in-out;
+  }
 }
 

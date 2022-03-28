@@ -5,17 +5,14 @@ import PreCode from '../precode/precode';
 const code = require('!!raw-loader!./icon.pre').default;
 
 const IconExample: React.FunctionComponent = () => {
-
   return (
     <>
-      <div>
+      <PreCode title='icon' describe='simple way to use svg' code={code}>
         <Icon name="alipay"/>
         <Icon name="QQ"/>
         <Icon name="wechat"/>
-      </div>
-      <PreCode>{code}</PreCode>
+      </PreCode>
     </>
-
   );
 };
 

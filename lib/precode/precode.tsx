@@ -1,26 +1,54 @@
-import React from 'react';
+import React, {useState} from 'react';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/base16/dracula.css';
-import './precode.scss'
+// import 'highlight.js/styles/atom-one-dark.css';
+import './precode.scss';
+import {marked} from 'marked';
+import {scopedClassMaker} from '../helper/class-names';
+import Icon from '../icon/icon';
+import {Scroll} from '../index';
 
+marked.setOptions({
+  langPrefix: 'hljs language-',
+  highlight: function (code) {
+    return hljs.highlightAuto(code, ['html', 'typescript']).value;
+  }
+});
+const sc = scopedClassMaker('cyber-pre')
 
-const PreCode: React.FunctionComponent = (props) => {
-  React.useEffect(() => {
-    document.querySelectorAll('pre').forEach(block => {
-      try {hljs.highlightElement(block);} catch (e) {console.log(e);}
-    });
-  });
+interface Props extends React.HTMLAttributes<HTMLElement>{
+  code: string;
+  title: string;
+  describe: string;
+}
+
+const PreCode: React.FunctionComponent<Props> = (props) => {
+  const [spread,setSpread] = useState(true)
+  const MARKDOWN_TEXT = ` \`\`\` ${props.code} \`\`\` `;
+
+  const onClick = () => {
+    console.log(spread)
+    setSpread(!spread)
+  }
   return (
-    <>
-      <div className="container">
-        <pre className="language-tsx">
-          <code>
-            {props.children}
-          </code>
-        </pre>
+    <div className={sc([''])}>
+      <div className={sc(['example'])}>{props.children}</div>
+      <div className={sc(['describe'])}>
+        <span className={sc(['describe-title'])}>{props.title}</span>
+        {props.describe}
+        <Icon style={{cursor: 'pointer'}} onClick={onClick} name='open'/>
       </div>
-    </>
-  );
+      <div style={{
+        maxHeight: spread ? '400px' : '0',
+        overflow: 'hidden',
+        transition: 'all .3s ease-in-out'
+      }}>
+        <Scroll height='400px'>
+          <div className={sc(['codeWrapper'])} dangerouslySetInnerHTML={{__html: marked(MARKDOWN_TEXT)}}/>
+        </Scroll>
+      </div>
+    </div>
+  )
 };
 
 export default PreCode;
