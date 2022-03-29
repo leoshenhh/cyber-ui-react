@@ -64,7 +64,7 @@ ReactDOM.render((
           </Routes>
         </Content>
       </Layout>
-      <Footer className="footer"><Cyber>&copy; leoshenhh</Cyber></Footer>
+      <Footer className="site-footer"><Cyber>&copy; leoshenhh</Cyber></Footer>
     </Layout>
   </BrowserRouter>
 ), document.getElementById('root'));
