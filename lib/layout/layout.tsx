@@ -17,9 +17,9 @@ const Layout: React.FunctionComponent<Props> = (props) => {
   const {className, ...rest} = props;
   const hasAside = props.children.some((child: ReactElement) => child.type === Aside);
   return (
-    <div className={sc(['', hasAside && 'hasAside'], className,)} {...rest}>
-      {props.children}
-    </div>
+      <div className={sc(['', hasAside && 'hasAside'], className,)} {...rest}>
+        {props.children}
+      </div>
   );
 };
 

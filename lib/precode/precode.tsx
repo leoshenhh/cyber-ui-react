@@ -23,6 +23,8 @@ interface Props extends React.HTMLAttributes<HTMLElement>{
   codeHeight?: string;
 }
 
+
+
 const PreCode: React.FunctionComponent<Props> = (props) => {
   const [spread,setSpread] = useState(true)
   const MARKDOWN_TEXT = ` \`\`\` ${props.code} \`\`\` `;
@@ -45,8 +47,9 @@ const PreCode: React.FunctionComponent<Props> = (props) => {
         transition: 'all .3s ease-in-out'
       }}>
         <Scroll height={props.codeHeight}>
-          <div className={sc(['codeWrapper'])} dangerouslySetInnerHTML={{__html: marked(MARKDOWN_TEXT)}}/>
+          <div className={sc(['codeWrapper'])} style={{height: props.codeHeight}} dangerouslySetInnerHTML={{__html: marked(MARKDOWN_TEXT)}}/>
         </Scroll>
+
       </div>
     </div>
   )

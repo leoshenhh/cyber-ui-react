@@ -109,7 +109,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
 
       <div
         className={sc(['inner'])}
-        style={{right: -scrollbarWidth()}}
+        style={{right: -scrollbarWidth(),paddingRight: scrollbarWidth()}}
         onScroll={onScroll}
         ref={containerRef}
       >
@@ -134,7 +134,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
 };
 
 Scroll.defaultProps = {
-  height: '200px',
+  height: '100vh',
   autoHide: false
 };
 

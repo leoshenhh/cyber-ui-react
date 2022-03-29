@@ -95,4 +95,22 @@ a {
   }
 }
 
+.apiTable{
+  & table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #606266;
+    & th ,& td {
+      height: 3em;
+      //line-height: 2em;
+      border-bottom: 1px solid #909399;
+    }
+    & thead{
+      color: #909399;
+      font-weight: normal;
+    }
+  }
+}
 
