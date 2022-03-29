@@ -53,6 +53,7 @@ ReactDOM.render((
         </Aside>
         <Content className="site-main">
           <Routes>
+            <Route path="/" element={<CyberExample/>}/>
             <Route path="/cyber" element={<CyberExample/>}/>
             <Route path="/icon" element={<IconExample/>}/>
             <Route path="/button" element={<ButtonExample/>}/>
