@@ -67,7 +67,6 @@ jobs:
             git add -f ./docs
             git commit -m "Deploy to GitHub pages [ci skip]"
             git push -f https://${GH_TOKEN}@github.com/leoshenhh/cyber-ui-react.git master:gh-pages
-c
 
 workflows:
   version: 2
@@ -97,7 +96,7 @@ workflows:
               only: /^v.*/
             branches:
               only: master
-              ignore: gh-pages
+
 
       - deploy:
           requires:
