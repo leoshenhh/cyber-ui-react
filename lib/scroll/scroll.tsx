@@ -205,7 +205,7 @@ Scroll.defaultProps = {
   autoHide: false,
   wrapperHeight: '100px',
   angle: 0,
-  direction: 'all',
+  direction: 'column',
   speed: 1,
   gradients:[
     {color: '#EA5DAD',percent: 0},

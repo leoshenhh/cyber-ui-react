@@ -23,9 +23,9 @@ const table = `
 |autoHide|auto hide scrollbar|Boolean|true / false|false|
 |speed|Animation speed (loop/s) |Number|-|2|
 |animate|Active animate|Boolean|true / false|true|
-|direction|Animation direction|string|all / row / column| all|
-|angle|Animation angle|number|-|90|
-|gradients|color gradient|object|-|-|
+|direction|Animation direction|String|all / row / column| all|
+|angle|Animation angle|Number|-|90|
+|gradients|color gradient|Array|[{color:#ffffff,percent:10}]|-|
 `
 
 
