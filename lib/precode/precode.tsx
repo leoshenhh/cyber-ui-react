@@ -30,7 +30,6 @@ const PreCode: React.FunctionComponent<Props> = (props) => {
   const MARKDOWN_TEXT = ` \`\`\` ${props.code} \`\`\` `;
 
   const onClick = () => {
-    console.log(spread)
     setSpread(!spread)
   }
   return (
