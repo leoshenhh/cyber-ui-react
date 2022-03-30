@@ -11,20 +11,28 @@ import {scopedClassMaker} from '../helper/class-names';
 import './scroll.scss';
 import scrollbarWidth from './scroolbar-width';
 import styled from 'styled-components';
+import {Gradient,handleGradients} from '../cyber/cyber';
+
+
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  wrapperHeight: string;
+  wrapperHeight?: string;
   autoHide?: boolean;
+  angle?: number;
+  direction?: 'all' | 'row' | 'column';
+  speed?: number;
+  gradients?: Array<Gradient>;
+  animate?: boolean
 }
 const sc = scopedClassMaker('cyber-scroll');
 
-const BarAni = styled('div')<{barHeight: number;aniName: string}> `
-  @keyframes ${props1 => props1.aniName} {
+const BarAni = styled('div')<{aniWidth: number;aniHeight: number;aniName: string}> `
+  @keyframes ${props => props.aniName} {
     0%{
       background-position: 0 0;
     }
     100%{
-      background-position: 0 ${props2 => props2.barHeight}px;
+      background-position: ${props => props.aniWidth}px ${props => props.aniHeight}px;
     }
   }
 `
@@ -54,11 +62,14 @@ function useMutationObservable(targetEl:HTMLElement, cb:()=>void, options = DEFA
 }
 
 const Scroll: React.FunctionComponent<Props> = (props) => {
-
+  const {wrapperHeight, autoHide,angle, direction, speed,gradients,animate,...rest} = props;
 
   const [barAniID] = useState(`barAni${Math.floor(Math.random() * 1000)}`)
-  const {wrapperHeight, autoHide, ...rest} = props;
+
   const [barHeight, setBarHeight] = useState(0);
+
+  const [aniHeight,setAniHeight] = useState(0)
+  const [aniWidth,setAniWidth] = useState(0)
 
   const [barTop, _setBarTop] = useState(0);
   const [barVisible, setBarVisible] = useState(!autoHide);
@@ -89,7 +100,6 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
     () => {
       const scrollHeight = containerRef.current.scrollHeight;
       const viewHeight = containerRef.current.getBoundingClientRect().height;
-      console.log(scrollHeight === viewHeight)
       if(scrollHeight === viewHeight){
         setBarVisible(false)
       }else{
@@ -104,6 +114,17 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   useEffect(() => {
     checkInnerHeight()
   }, []);
+  useEffect(()=>{
+    if(direction === 'all'){
+      setAniHeight(barHeight)
+      setAniWidth(scrollbarWidth())
+    }else if(direction === 'row'){
+      setAniWidth(scrollbarWidth())
+    }else if(direction === 'column'){
+      setAniHeight(barHeight)
+    }
+
+  },[barHeight])
 
   useEffect(() => {
     if (barVisible && autoHide) {
@@ -151,7 +172,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
       className={sc([''])}
       style={{height: wrapperHeight,width: '100%'}}
     >
-      <BarAni barHeight={barHeight} aniName={barAniID}/>
+      <BarAni aniWidth={aniWidth} aniHeight={aniHeight} aniName={barAniID}/>
 
       <div
         className={sc(['inner'])}
@@ -169,7 +190,8 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
                   style={{
                     height: barHeight,
                     transform: `translateY(${barTop}px)`,
-                    animation: `1s ${barAniID} infinite linear`
+                    animation: animate?`1s ${barAniID} infinite linear`:'1s',
+                    backgroundImage: `linear-gradient(${angle}deg,${handleGradients(gradients)})`
                   }}
                   onMouseDown={onMouseDownBar}
               />
@@ -180,7 +202,19 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
 };
 
 Scroll.defaultProps = {
-  autoHide: false
+  autoHide: false,
+  wrapperHeight: '100px',
+  angle: 0,
+  direction: 'all',
+  speed: 1,
+  gradients:[
+    {color: '#EA5DAD',percent: 0},
+    {color: '#C2A0FD',percent: 30},
+    {color: '#3BF0E4',percent: 50},
+    {color: '#C2A0FD',percent: 70},
+    {color: '#EA5DAD',percent: 100}
+  ],
+  animate: true
 };
 
 export default Scroll;

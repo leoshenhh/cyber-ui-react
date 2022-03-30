@@ -34,6 +34,9 @@ ReactDOM.render((
                 <NavLink to="/cyber">Cyber</NavLink>
               </li>
               <li>
+                <NavLink to="/scroll">Scroll</NavLink>
+              </li>
+              <li>
                 <NavLink to="/icon">Icon</NavLink>
               </li>
               <li>
@@ -48,9 +51,7 @@ ReactDOM.render((
               <li>
                 <NavLink to="/form">Form</NavLink>
               </li>
-              <li>
-                <NavLink to="/scroll">Scroll</NavLink>
-              </li>
+
             </ul>
           </Aside>
           <Content className="site-main">

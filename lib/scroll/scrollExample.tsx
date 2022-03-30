@@ -1,6 +1,7 @@
 import React from 'react';
 import Scroll from './scroll';
 import PreCode from '../precode/precode';
+import {marked} from 'marked';
 
 const code = `
 import React from 'react'
@@ -15,6 +16,18 @@ const demo = () => {
 
 ReactDOM.render(<Demo />, document.getElementById('root'));
 `
+const table = `
+|Params|Describe|Type|Optional|Default|
+|:----|:----|:----|:--------|:--|
+|wrapperHeight|scroll area height |string|px / % / vh|100px|
+|autoHide|auto hide scrollbar|Boolean|true / false|false|
+|speed|Animation speed (loop/s) |Number|-|2|
+|animate|Active animate|Boolean|true / false|true|
+|direction|Animation direction|string|all / row / column| all|
+|angle|Animation angle|number|-|90|
+|gradients|color gradient|object|-|-|
+`
+
 
 const ScrollExample: React.FunctionComponent = () => {
   return (
@@ -25,6 +38,8 @@ const ScrollExample: React.FunctionComponent = () => {
             <p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p><p>20</p></div>
         </Scroll>
       </PreCode>
+      <h2 style={{padding: '20px 0'}}>Attributes</h2>
+      <div className='apiTable' dangerouslySetInnerHTML={{ __html: marked(table) }} />
     </div>
   );
 };

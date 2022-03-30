@@ -16,7 +16,7 @@ const CyberAni = styled('div')<{ textWidth: number; textHeight: number; aniName:
   }
 `;
 
-interface Gradient {color: string;percent:number}
+export interface Gradient {color: string;percent:number}
 
 interface Props extends HTMLAttributes<HTMLElement> {
   animate?: Boolean;
@@ -26,7 +26,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
   gradients?: Array<Gradient>
 }
 
-const handleGradients = (gradients: Array<Gradient>) :string => {
+export const handleGradients = (gradients: Array<Gradient>) :string => {
   const arr = gradients.map(item => {
     return `${item.color} ${item.percent}%`
   })
