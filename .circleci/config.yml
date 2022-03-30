@@ -66,6 +66,7 @@ jobs:
             git config user.name leoshenhh
             git config user.email 343206898@qq.com
             git add -f ./docs
+            git add ./.circleci
             git commit -m "[skip ci]"
             git push -f https://${GH_TOKEN}@github.com/leoshenhh/cyber-ui-react.git master:gh-pages
 
