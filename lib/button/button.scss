@@ -4,18 +4,33 @@
   cursor: pointer;
   border: none;
   appearance: none;
-  color: rgb(255, 255, 255);
-  font-weight: 400;
-  opacity: 0.95;
-  padding: 4px 8px;
-  transition: all 0.3s ease 0s;
   position: relative;
-  background-image: linear-gradient(340deg, rgb(75, 161, 252) 3.44%, rgb(236, 42, 237) 100%);
-  border-radius: 4px;
+  display: inline-flex;
+  color: #ffffff;
+  &-inner{
+    display: flex;
+
+    &-small{
+      padding: 2px 8px;
+    }
+    &-medium{
+      padding: 6px 20px;
+    }
+    &-large{
+      padding: 10px 40px;
+    }
+  }
   &-large{
-    padding: 10px 50px;
-    border-radius: 16px;
-    font-size: 22px;
+    font-size: 24px;
+    padding: 3px;
+  }
+  &-medium{
+    font-size: 16px;
+    padding: 3px;
+  }
+  &-small{
+    font-size: 12px;
+    padding: 3px;
   }
   & + &{
     margin-left: 6px;
