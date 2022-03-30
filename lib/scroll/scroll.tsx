@@ -1,4 +1,12 @@
-import React, {HTMLAttributes, MouseEventHandler, UIEventHandler, useEffect, useRef, useState} from 'react';
+import React, {
+  HTMLAttributes,
+  MouseEventHandler,
+  UIEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import {scopedClassMaker} from '../helper/class-names';
 import './scroll.scss';
 import scrollbarWidth from './scroolbar-width';
@@ -21,8 +29,33 @@ const BarAni = styled('div')<{barHeight: number;aniName: string}> `
   }
 `
 
+const DEFAULT_OPTIONS = {
+  config: { childList: true, subtree: true },
+};
+
+function useMutationObservable(targetEl:HTMLElement, cb:()=>void, options = DEFAULT_OPTIONS) {
+  const [observer, setObserver] = useState(null);
+
+  useEffect(() => {
+    const obs = new MutationObserver(cb);
+    setObserver(obs);
+  }, [cb, options, setObserver]);
+
+  useEffect(() => {
+    if (!observer) return;
+    const { config } = options;
+    observer.observe(targetEl, config);
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
+  }, [observer, targetEl, options]);
+}
+
 const Scroll: React.FunctionComponent<Props> = (props) => {
-  console.log(1)
+
+
   const [barAniID] = useState(`barAni${Math.floor(Math.random() * 1000)}`)
   const {wrapperHeight, autoHide, ...rest} = props;
   const [barHeight, setBarHeight] = useState(0);
@@ -31,6 +64,8 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   const [barVisible, setBarVisible] = useState(!autoHide);
 
   const containerRef = useRef<HTMLDivElement>(null);
+
+
 
   const setBarTop = (number: number) => {
     if (number < 0) return;
@@ -42,21 +77,32 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   };
 
   const onScroll: UIEventHandler = (e) => {
-    setBarVisible(true);
     const scrollHeight = containerRef.current.scrollHeight;
     const viewHeight = containerRef.current.getBoundingClientRect().height;
+    if(scrollHeight === viewHeight) return
+    setBarVisible(true);
     const scrollTop = containerRef.current.scrollTop;
     setBarTop(scrollTop * viewHeight / scrollHeight);
   };
 
+  const checkInnerHeight = useCallback(
+    () => {
+      const scrollHeight = containerRef.current.scrollHeight;
+      const viewHeight = containerRef.current.getBoundingClientRect().height;
+      console.log(scrollHeight === viewHeight)
+      if(scrollHeight === viewHeight){
+        setBarVisible(false)
+      }else{
+        setBarVisible(true)
+        setBarHeight(viewHeight * viewHeight / scrollHeight);
+        _setBarTop(0);
+      }
+    },
+    []
+  );
+  useMutationObservable(containerRef.current,checkInnerHeight)
   useEffect(() => {
-    const scrollHeight = containerRef.current.scrollHeight;
-    const viewHeight = containerRef.current.getBoundingClientRect().height;
-    setBarHeight(viewHeight * viewHeight / scrollHeight);
-
-    if(scrollHeight === viewHeight){
-      setBarVisible(false)
-    }
+    checkInnerHeight()
   }, []);
 
   useEffect(() => {
