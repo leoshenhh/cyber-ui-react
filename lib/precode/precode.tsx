@@ -46,7 +46,7 @@ const PreCode: React.FunctionComponent<Props> = (props) => {
         overflow: 'hidden',
         transition: 'all .3s ease-in-out'
       }}>
-        <Scroll height={props.codeHeight}>
+        <Scroll wrapperHeight={props.codeHeight}>
           <div className={sc(['codeWrapper'])} style={{height: props.codeHeight}} dangerouslySetInnerHTML={{__html: marked(MARKDOWN_TEXT)}}/>
         </Scroll>
 

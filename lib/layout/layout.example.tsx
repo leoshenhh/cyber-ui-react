@@ -10,7 +10,7 @@ import Scroll from '../scroll/scroll';
 
 const LayoutExample: React.FunctionComponent = () => {
   return (
-    <Scroll height='100%'>
+    <>
       <div>
         <h1>example 1</h1>
         <Layout className="layout">
@@ -41,7 +41,7 @@ const LayoutExample: React.FunctionComponent = () => {
           </Layout>
         </Layout>
       </div>
-    </Scroll>
+    </>
   );
 };
 

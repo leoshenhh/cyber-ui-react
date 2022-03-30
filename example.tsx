@@ -11,61 +11,65 @@ import ButtonExample from './lib/button/button.example';
 import Cyber from './lib/cyber/cyber';
 import ScrollExample from './lib/scroll/scrollExample';
 import CyberExample from './lib/cyber/cyber.example';
+import {Scroll} from './lib';
 
 const logo = require('./icons/logo.png').default;
 
 ReactDOM.render((
   <BrowserRouter>
-    <Layout className="site-page">
-      <Header className="site-header">
-        <div className="logo">
-          <img src={logo} alt=""/>
-          <h2><Cyber>CyberUI</Cyber></h2>
-        </div>
-        <h4><Cyber> A Cool And Simple REACT UI library </Cyber></h4>
-      </Header>
-      <Layout>
-        <Aside className="site-aside">
-          <h1><Cyber>Component</Cyber></h1>
-          <ul>
-            <li>
-              <NavLink to="/cyber">Cyber</NavLink>
-            </li>
-            <li>
-              <NavLink to="/icon">Icon</NavLink>
-            </li>
-            <li>
-              <NavLink to="/button">Button</NavLink>
-            </li>
-            <li>
-              <NavLink to="/dialog">Dialog</NavLink>
-            </li>
-            <li>
-              <NavLink to="/layout">Layout</NavLink>
-            </li>
-            <li>
-              <NavLink to="/form">Form</NavLink>
-            </li>
-            <li>
-              <NavLink to="/scroll">Scroll</NavLink>
-            </li>
-          </ul>
-        </Aside>
-        <Content className="site-main">
-          <Routes>
-            <Route path="/" element={<CyberExample/>}/>
-            <Route path="/cyber" element={<CyberExample/>}/>
-            <Route path="/icon" element={<IconExample/>}/>
-            <Route path="/button" element={<ButtonExample/>}/>
-            <Route path="/dialog" element={<DialogExample/>}/>
-            <Route path="/layout" element={<LayoutExample/>}/>
-            <Route path="/form" element={<FormExample/>}/>
-            <Route path="/scroll" element={<ScrollExample/>}/>
-          </Routes>
-        </Content>
+    <Scroll wrapperHeight='100vh'>
+      <Layout className="site-page">
+        <Header className="site-header">
+          <div className="logo">
+            <img src={logo} alt=""/>
+            <h2><Cyber>CyberUI</Cyber></h2>
+          </div>
+          <h4><Cyber> A Cool And Simple REACT UI library </Cyber></h4>
+        </Header>
+        <Layout>
+          <Aside className="site-aside">
+            <h1><Cyber>Component</Cyber></h1>
+            <ul>
+              <li>
+                <NavLink to="/cyber">Cyber</NavLink>
+              </li>
+              <li>
+                <NavLink to="/icon">Icon</NavLink>
+              </li>
+              <li>
+                <NavLink to="/button">Button</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dialog">Dialog</NavLink>
+              </li>
+              <li>
+                <NavLink to="/layout">Layout</NavLink>
+              </li>
+              <li>
+                <NavLink to="/form">Form</NavLink>
+              </li>
+              <li>
+                <NavLink to="/scroll">Scroll</NavLink>
+              </li>
+            </ul>
+          </Aside>
+          <Content className="site-main">
+            <Routes>
+              <Route path="/" element={<CyberExample/>}/>
+              <Route path="/cyber" element={<CyberExample/>}/>
+              <Route path="/icon" element={<IconExample/>}/>
+              <Route path="/button" element={<ButtonExample/>}/>
+              <Route path="/dialog" element={<DialogExample/>}/>
+              <Route path="/layout" element={<LayoutExample/>}/>
+              <Route path="/form" element={<FormExample/>}/>
+              <Route path="/scroll" element={<ScrollExample/>}/>
+            </Routes>
+          </Content>
+        </Layout>
+        <Footer className="site-footer"><Cyber>&copy; leoshenhh</Cyber></Footer>
       </Layout>
-      <Footer className="site-footer"><Cyber>&copy; leoshenhh</Cyber></Footer>
-    </Layout>
+    </Scroll>
+
   </BrowserRouter>
 ), document.getElementById('root'));
 
