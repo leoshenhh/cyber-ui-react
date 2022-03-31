@@ -22,13 +22,14 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   gradients?: Array<Gradient>;
   animate?: boolean;
   speed?: number;
-  direction?: 'all' | 'row' | 'column'
+  direction?: 'all' | 'row' | 'column';
+  round?: boolean;
 }
 
 const sc = scopedClassMaker('cyber-button');
 
 const Button: React.FunctionComponent<Props> = (props) => {
-  const {className, angle, gradients,animate,speed, direction,modal,size,...rest} = props;
+  const {className, angle, gradients,animate,speed, direction,modal,size, round , ...rest} = props;
   const [buttonAniID,setButtonAniID] = useState('');
   const [buttonWidth,setButtonWidth] = useState(0)
   const [buttonHeight,setButtonHeight] = useState(0)
@@ -52,7 +53,7 @@ const Button: React.FunctionComponent<Props> = (props) => {
   return (
     <button
       ref={buttonRef}
-      className={sc(['', size])}
+      className={sc(['', size],round ? 'round' : null)}
       style={{
         animation: animate ? `${buttonAniID} ${speed}s infinite linear` : '1s',
         backgroundImage: `linear-gradient(${angle}deg,${handleGradients(gradients)}`
@@ -60,7 +61,7 @@ const Button: React.FunctionComponent<Props> = (props) => {
       {...rest}
     >
       <ButtonAni
-        className={sc(['inner',`inner-${size}`])}
+        className={sc(['inner',`inner-${size}`],round ? 'round' : null)}
         width={buttonWidth}
         height={buttonHeight}
         aniName={buttonAniID}
@@ -76,7 +77,7 @@ const Button: React.FunctionComponent<Props> = (props) => {
 };
 
 Button.defaultProps = {
-  animate: false,
+  animate: true,
   size: 'medium',
   angle: 90,
   gradients: [
@@ -88,7 +89,8 @@ Button.defaultProps = {
   ],
   speed: 1,
   direction: 'row',
-  modal: 'primary'
+  modal: 'primary',
+  round: false
 };
 
 export default Button;

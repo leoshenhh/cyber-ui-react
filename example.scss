@@ -26,7 +26,7 @@ a {
 
   .site-header {
     background: $background-black;
-    padding-right: 6px;
+    padding: 0 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +34,6 @@ a {
     border: 1px solid #30363d;
 
     .logo {
-      padding: 0 6px;
       display: inline-flex;
       justify-content: center;
       align-items: center;
@@ -61,20 +60,28 @@ a {
 
     li {
       color: #ffffff;
+      display: flex;
+      padding: 8px $aside-padding;
+
 
       a {
-        padding: 8px $aside-padding;
-        display: flex;
+        font-size: 18px;
+        //border: 1px solid red;
+        transition: all .3s ease-in-out;
       }
 
       a.active {
-        color: $thr-main-color;
-        background: $main-color;
+        font-size: 22px;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(270.97deg, #FFE580 -21.36%, #FF7571 -2.45%, #EA5DAD 26.84%, #C2A0FD 64.15%, #3BF0E4 108.29%, #B2F4B6 159.03%);
       }
 
       a:hover {
-        color: $sec-main-color;
-        //background-color: $sec-main-color;
+        font-size: 22px;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(270.97deg, #FFE580 -21.36%, #FF7571 -2.45%, #EA5DAD 26.84%, #C2A0FD 64.15%, #3BF0E4 108.29%, #B2F4B6 159.03%);
       }
     }
   }

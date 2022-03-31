@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './button';
 import PreCode from '../precode/precode';
-import Cyber from '../cyber/cyber';
+import {Cyber} from '../index';
 
 const code = `
 import React from 'react'
@@ -19,9 +19,9 @@ ReactDOM.render(<Demo />, document.getElementById('root'));
 function ButtonExample() {
   return (
     <>
-      <PreCode codeHeight="270px" title="button" describe="" code={code}>
+      <PreCode codeHeight="270px" title="button" describe="cyber style button" code={code}>
         <div>
-          <Button size="small">button</Button>
+          <Button size="small"><Cyber>Button</Cyber></Button>
           <Button size="medium">button</Button>
           <Button size="large">button</Button>
         </div>

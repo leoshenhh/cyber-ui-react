@@ -8,8 +8,8 @@ export default () => {
     password: ''
   });
   const [fields] = useState([
-    {name: 'username', label: '用户名', input: {type: 'text'}},
-    {name: 'password', label: '密码', input: {type: 'password'}}
+    {name: 'username', label: 'username', input: {type: 'text'}},
+    {name: 'password', label: 'password', input: {type: 'password'}}
   ]);
   const [errors,setErrors] = useState({})
   const formRules = [
@@ -24,6 +24,7 @@ export default () => {
   return (
     <div>
       <Form
+        labelWidth={100}
         formData={formData}
         fields={fields}
         errors={errors}
@@ -31,8 +32,8 @@ export default () => {
         onChange={(value)=>setFormData(value)}
         buttons={
           <Fragment>
-            <Button type="submit">提交</Button>
-            <Button>返回</Button>
+            <Button type="submit">submit</Button>
+            <Button>cancel</Button>
           </Fragment>
         }
       />

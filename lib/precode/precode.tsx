@@ -6,7 +6,7 @@ import './precode.scss';
 import {marked} from 'marked';
 import {scopedClassMaker} from '../helper/class-names';
 import Icon from '../icon/icon';
-import {Scroll} from '../index';
+import {Cyber, Scroll} from '../index';
 
 marked.setOptions({
   langPrefix: 'hljs language-',
@@ -36,9 +36,9 @@ const PreCode: React.FunctionComponent<Props> = (props) => {
     <div className={sc([''])}>
       <div className={sc(['example'])}>{props.children}</div>
       <div className={sc(['describe'])}>
-        <span className={sc(['describe-title'])}>{props.title}</span>
+        <span className={sc(['describe-title'])}><Cyber>{props.title}</Cyber></span>
         {props.describe}
-        <Icon style={{cursor: 'pointer'}} onClick={onClick} name='open'/>
+        <Icon style={{cursor: 'pointer'}} onClick={onClick} name={ spread ? `packup` : 'open'}/>
       </div>
       <div style={{
         maxHeight: spread ? props.codeHeight : '0',
@@ -48,7 +48,6 @@ const PreCode: React.FunctionComponent<Props> = (props) => {
         <Scroll wrapperHeight={props.codeHeight}>
           <div className={sc(['codeWrapper'])} style={{height: props.codeHeight}} dangerouslySetInnerHTML={{__html: marked(MARKDOWN_TEXT)}}/>
         </Scroll>
-
       </div>
     </div>
   )
