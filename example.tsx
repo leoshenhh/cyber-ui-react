@@ -32,7 +32,7 @@ ReactDOM.render((
         </Header>
         <Layout>
           <Aside className="site-aside">
-            <h1><Cyber>Component</Cyber></h1>
+            <h2>Component</h2>
             <ul>
               <li>
                 <NavLink to="cyber">Cyber</NavLink>

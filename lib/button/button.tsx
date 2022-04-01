@@ -24,12 +24,13 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   speed?: number;
   direction?: 'all' | 'row' | 'column';
   round?: boolean;
+  innerBackground?: string
 }
 
 const sc = scopedClassMaker('cyber-button');
 
 const Button: React.FunctionComponent<Props> = (props) => {
-  const {className, angle, gradients,animate,speed, direction,modal,size, round , ...rest} = props;
+  const {className, angle, gradients,animate,speed, direction,modal,size, round ,innerBackground, ...rest} = props;
   const [buttonAniID,setButtonAniID] = useState('');
   const [buttonWidth,setButtonWidth] = useState(0)
   const [buttonHeight,setButtonHeight] = useState(0)
@@ -66,7 +67,7 @@ const Button: React.FunctionComponent<Props> = (props) => {
         height={buttonHeight}
         aniName={buttonAniID}
         style={{
-          background: modal==='primary'?  'black' :'transparent'
+          background: modal==='primary'?  innerBackground :'transparent'
         }}
       >
         {props.children}
@@ -90,7 +91,8 @@ Button.defaultProps = {
   speed: 1,
   direction: 'row',
   modal: 'primary',
-  round: false
+  round: false,
+  innerBackground: 'black'
 };
 
 export default Button;

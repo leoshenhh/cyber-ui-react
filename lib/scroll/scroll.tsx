@@ -90,7 +90,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
   const onScroll: UIEventHandler = (e) => {
     const scrollHeight = containerRef.current.scrollHeight;
     const viewHeight = containerRef.current.getBoundingClientRect().height;
-    if(scrollHeight === viewHeight) return
+    if(scrollHeight <= viewHeight) return
     setBarVisible(true);
     const scrollTop = containerRef.current.scrollTop;
     setBarTop(scrollTop * viewHeight / scrollHeight);
@@ -100,7 +100,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
     () => {
       const scrollHeight = containerRef.current.scrollHeight;
       const viewHeight = containerRef.current.getBoundingClientRect().height;
-      if(scrollHeight === viewHeight){
+      if(scrollHeight <= viewHeight){
         setBarVisible(false)
       }else{
         setBarVisible(true)

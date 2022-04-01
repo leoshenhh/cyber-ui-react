@@ -30,7 +30,7 @@ const CyberExample:React.FunctionComponent =  (props) => {
   return (
     <>
       <PreCode codeHeight='240px' title='cyber' describe='Cyber style text , Beauty is justice!' code={code}>
-        <Cyber><h2>Cyber is awesome</h2></Cyber>
+        <Cyber><h2>CyberUI is awesome</h2></Cyber>
       </PreCode>
       <h2 style={{padding: '20px 0'}}>Attributes</h2>
       <div className='apiTable' dangerouslySetInnerHTML={{ __html: marked(table) }} />

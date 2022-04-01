@@ -8,6 +8,10 @@
   display: inline-flex;
   color: #ffffff;
   overflow: hidden;
+  transition: opacity .3s;
+  &:hover{
+    opacity: 0.8;
+  }
   &-inner{
     display: flex;
 

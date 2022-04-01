@@ -50,23 +50,21 @@ a {
   }
 
   .site-aside {
+    color: #ffffff;
     background: rgba(13,17,23,0.9);
     border: 1px solid #30363d;
     box-shadow: 0 100px 80px rgba(0,0,0,0.18),0 41.7776px 33.4221px rgba(0,0,0,0.129394),0px 22.3363px 17.869px rgba(0,0,0,0.107299),0px 12.5216px 10.0172px rgba(0,0,0,0.09),0px 6.6501px 5.32008px rgba(0,0,0,0.0727007),0px 2.76726px 2.21381px rgba(0,0,0,0.0506062);
-    h1 {
+    h2 {
       padding: 12px $aside-padding;
-      color: $sec-main-color;
     }
 
     li {
-      color: #ffffff;
       display: flex;
       padding: 8px $aside-padding;
 
 
       a {
         font-size: 18px;
-        //border: 1px solid red;
         transition: all .3s ease-in-out;
       }
 
