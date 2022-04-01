@@ -12,6 +12,7 @@ import Cyber from './lib/cyber/cyber';
 import ScrollExample from './lib/scroll/scrollExample';
 import CyberExample from './lib/cyber/cyber.example';
 import {Icon, Scroll} from './lib';
+import CyberBrExample from './lib/cyber-br/index.example';
 
 const logo = require('./icons/logo.png').default;
 
@@ -44,6 +45,9 @@ ReactDOM.render((
                 <NavLink to="scroll">Scroll</NavLink>
               </li>
               <li>
+                <NavLink to="cyberBr">CyberBr</NavLink>
+              </li>
+              <li>
                 <NavLink to="icon">Icon</NavLink>
               </li>
               <li>
@@ -66,6 +70,7 @@ ReactDOM.render((
               <Route path="layout" element={<LayoutExample/>}/>
               <Route path="form" element={<FormExample/>}/>
               <Route path="scroll" element={<ScrollExample/>}/>
+              <Route path="cyberBr" element={<CyberBrExample/>}/>
             </Routes>
           </Content>
         </Layout>

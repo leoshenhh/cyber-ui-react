@@ -1,7 +1,7 @@
 {
   "name": "cyber-ui-react",
   "version": "0.0.54",
-  "description": "",
+  "description": "cyber style react library",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
   "files": [
