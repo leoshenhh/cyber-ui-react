@@ -1,0 +1,116 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:12
+
+version: 2
+jobs:
+  prepare:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package.json" }}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: yarn build && yarn docs
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .circleci
+            - docs
+            - dist
+            - package.json
+            - LICENSE
+            - README.md
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: yarn ci
+      - store_test_results:
+          path: test_results
+
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+      - run: npm publish
+
+  deploy-gh-pages:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: gh-pages
+          command: |
+            git init
+            git config user.name leoshenhh
+            git config user.email 343206898@qq.com
+            git add -f ./docs
+            git add ./.circleci
+            git commit -m "[skip ci]"
+            git push -f https://${GH_TOKEN}@github.com/leoshenhh/cyber-ui-react.git master:gh-pages
+
+workflows:
+  version: 2
+  build_accept_deploy:
+    jobs:
+      - prepare:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: gh-pages
+      - test:
+          requires:
+            - prepare
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: gh-pages
+      - build:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: gh-pages
+
+
+      - deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - deploy-gh-pages:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
