@@ -38,9 +38,10 @@ const Cyber: React.FunctionComponent<Props> = (props) => {
   const [textWidth, setTextWidth] = useState(0);
   const [textHeight, setTextHeight] = useState(0);
   const cyberRef = useRef<HTMLSpanElement>(null);
-  const [cyberAniID] = useState(`cyberAni${Math.floor(Math.random() * 1000)}`);
+  const [cyberAniID,setCyberAniID] = useState('');
 
   useEffect(() => {
+    setCyberAniID(`cyberAni${Math.floor(Math.random() * 1000)}`)
     if (direction === 'all') {
       setTextWidth(cyberRef.current.scrollWidth);
       setTextHeight(cyberRef.current.scrollHeight);
