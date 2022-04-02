@@ -6,6 +6,8 @@ module.exports = Object.assign({}, base, {
     devtool: 'source-map',
     devServer: {
         historyApiFallback: true,
+        host: '127.0.0.1',
+        port:8088
     },
     entry: {
         example: './example.tsx'
