@@ -2,6 +2,7 @@ import React, {HTMLAttributes, useEffect, useRef, useState} from 'react';
 import './cyber.scss';
 import styled from 'styled-components';
 import {scopedClassMaker} from '../helper/class-names';
+import useAni, {AniProps,handleGradients} from '../hooks/useAni';
 
 const sc = scopedClassMaker('cyber-span');
 
@@ -16,52 +17,21 @@ const CyberAni = styled('div')<{ textWidth: number; textHeight: number; aniName:
   }
 `;
 
-export interface Gradient {color: string;percent:number}
-
-interface Props extends HTMLAttributes<HTMLElement> {
-  animate?: Boolean;
-  speed?: Number;
-  direction?: 'all' | 'row' | 'column';
-  angle?: number;
-  gradients?: Array<Gradient>
-}
-
-export const handleGradients = (gradients: Array<Gradient>) :string => {
-  const arr = gradients.map(item => {
-    return `${item.color} ${item.percent}%`
-  })
-  return arr.join(',')
-}
+interface Props extends AniProps,HTMLAttributes<HTMLElement> {}
 
 const Cyber: React.FunctionComponent<Props> = (props) => {
   const {direction,animate,speed,angle , gradients} = props;
-  const [textWidth, setTextWidth] = useState(0);
-  const [textHeight, setTextHeight] = useState(0);
-  const cyberRef = useRef<HTMLSpanElement>(null);
-  const [cyberAniID,setCyberAniID] = useState('');
-
-  useEffect(() => {
-    setCyberAniID(`cyberAni${Math.floor(Math.random() * 1000)}`)
-    if (direction === 'all') {
-      setTextWidth(cyberRef.current.scrollWidth);
-      setTextHeight(cyberRef.current.scrollHeight);
-    } else if (direction === 'row') {
-      setTextWidth(cyberRef.current.scrollWidth);
-    } else if (direction === 'column') {
-      setTextHeight(cyberRef.current.scrollHeight);
-    }
-  }, []);
-
+  const {aniRef, aniID, aniWidth, aniHeight} = useAni(direction);
   return (
     <span
-      ref={cyberRef}
+      ref={aniRef}
       className={sc([''])}
       style={{
-        animation: animate ? `${cyberAniID} ${speed}s infinite linear` : '1s',
+        animation: animate ? `${aniID} ${speed}s infinite linear` : '1s',
         backgroundImage: `linear-gradient(${angle}deg,${handleGradients(gradients)}`
       }}
     >
-      <CyberAni textWidth={textWidth} textHeight={textHeight} aniName={cyberAniID}/>
+      <CyberAni textWidth={aniWidth} textHeight={aniHeight} aniName={aniID}/>
       {props.children}
     </span>
   );

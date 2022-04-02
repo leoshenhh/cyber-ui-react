@@ -11,18 +11,14 @@ import {scopedClassMaker} from '../helper/class-names';
 import './scroll.scss';
 import scrollbarWidth from './scroolbar-width';
 import styled from 'styled-components';
-import {Gradient,handleGradients} from '../cyber/cyber';
+import useAni, {AniProps,handleGradients} from '../hooks/useAni';
 
 
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+
+interface Props extends AniProps, HTMLAttributes<HTMLDivElement> {
   wrapperHeight?: string;
   autoHide?: boolean;
-  angle?: number;
-  direction?: 'all' | 'row' | 'column';
-  speed?: number;
-  gradients?: Array<Gradient>;
-  animate?: boolean
 }
 const sc = scopedClassMaker('cyber-scroll');
 

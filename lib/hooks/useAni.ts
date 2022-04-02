@@ -9,8 +9,15 @@ export interface AniProps {
   direction?: 'all' | 'row' | 'column';
 }
 
+export const handleGradients = (gradients: Array<Gradient>) :string => {
+  const arr = gradients.map(item => {
+    return `${item.color} ${item.percent}%`
+  })
+  return arr.join(',')
+}
+
 const useAni = (direction:'all' | 'row' | 'column') => {
-  const aniRef = useRef<HTMLDivElement>(null);
+  const aniRef = useRef(null);
   const [aniID, setAniID] = useState('');
   const [aniWidth, setAniWidth] = useState(0);
   const [aniHeight, setAniHeight] = useState(0);

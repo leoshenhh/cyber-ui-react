@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
-import {handleGradients} from '../cyber/cyber';
-import useAni, {AniProps} from '../hooks/useAni';
+
+import useAni, {AniProps,handleGradients} from '../hooks/useAni';
 
 
 const Br = styled('div')<{ textWidth: number; textHeight: number; aniName: string }>`
