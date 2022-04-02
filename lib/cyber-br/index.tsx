@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import styled, {css} from 'styled-components';
 
 import useAni, {AniProps, handleGradients} from '../hooks/useAni';
+import {Cyber} from '../index';
 
 
 const Br = styled('div')<{ textWidth: number; textHeight: number; aniName: string }>`
@@ -52,7 +53,7 @@ const CyberBr: React.FC<Props> = (props) => {
   const {animate, speed, angle, gradients, direction, round, height, text, textAlign} = props;
   const {aniRef, aniID, aniWidth, aniHeight} = useAni(direction);
   return (
-    <div style={{position: 'relative'}}>
+    <div style={{position: 'relative',width: '100%',padding: '10px 0'}}>
       <Br
         ref={aniRef}
         textWidth={aniWidth} textHeight={aniHeight} aniName={aniID}
@@ -67,7 +68,7 @@ const CyberBr: React.FC<Props> = (props) => {
       <Text
         align={textAlign}
         aniHeight={aniHeight}
-      >{text}</Text>
+      >{ text ? <Cyber>{text}</Cyber> : null}</Text>
     </div>
 
   );
